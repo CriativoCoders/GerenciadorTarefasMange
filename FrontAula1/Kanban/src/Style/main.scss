@@ -1,0 +1,8 @@
+@use './cabecalho.scss';
+@use './variaveis.scss';
+@use './barraNavegacao.scss';
+@use './cadastro.scss';
+@use './inicial.scss';
+@use './tarefas.scss';
+// esse arquivo vai chamar os css para a pagina de cadastro etc
+// tipo eu crio os componentes faco o css e importo o css no app mais para aparecer aqui tem que importar o css aqui

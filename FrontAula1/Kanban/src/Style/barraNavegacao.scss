@@ -1,0 +1,59 @@
+@use './variaveis.scss' as *;
+
+.barra {
+  width: 100%;
+  height: 50px; // um pouco mais alta
+  background-color: $cor-destaque;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1); // sombra sutil
+  position: sticky; // fica fixa ao rolar a página
+  top: 0;
+  z-index: 100;
+
+  ul {
+    font-size: $font-size;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 1.5rem;
+    color: $link-color;
+    margin: 0;
+    padding: 0;
+    
+    li {
+      list-style: none;
+      position: relative;
+
+      a {
+        text-decoration: none;
+        color: $link-color;
+        font-weight: 500;
+        transition: color 0.3s ease, transform 0.2s ease;
+
+        &:hover {
+          color: darken($link-color, 15%);
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+
+  // Responsivo: telas menores que 600px
+  @media (max-width: 600px) {
+    ul {
+      flex-direction: column;
+      gap: 1rem;
+      background-color: $cor-destaque;
+      position: absolute;
+      top: 50px;
+      right: 0;
+      width: 200px;
+      padding: 10px;
+      display: none; // pode ser ativado com JS para menu hamburger
+      border-radius: 0 0 8px 8px;
+    }
+  }
+}
