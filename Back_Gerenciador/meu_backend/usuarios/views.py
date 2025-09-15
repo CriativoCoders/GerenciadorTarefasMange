@@ -6,6 +6,7 @@ from .serializers import UsuarioSerializer
 from .models import Tarefa
 from .serializers import TarefaSerializer
 
+# api para listar e criar usuarios
 @api_view(['GET', 'POST'])
 def usuarios_list(request):
     if request.method == 'GET':
@@ -21,7 +22,7 @@ def usuarios_list(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-
+# api para listar e criar tarefas
 @api_view(['GET', 'POST'])
 def tarefas_list(request):
     if request.method == 'GET':
@@ -35,3 +36,16 @@ def tarefas_list(request):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+  
+# api para excluir tarefa
+@api_view(['DELETE'])
+def excluir_tarefa(request, id):
+    try:
+        tarefa = Tarefa.objects.get(id=id)
+        tarefa.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    except Tarefa.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    
