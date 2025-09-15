@@ -38,6 +38,8 @@ export default function Tarefas() {
   };
 
   // ✅ Excluir tarefa no backend e frontend
+  //==================================
+  // Em teste, o backend está retornando erro 404 ao tentar excluir
   const excluirTarefa = async (id) => {
     try {
       await axios.delete(`http://127.0.0.1:8000/tarefas/${id}/`);
