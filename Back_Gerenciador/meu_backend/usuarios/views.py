@@ -46,6 +46,6 @@ def excluir_tarefa(request, id):
         tarefa.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
     except Tarefa.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
+        return Response({'erro': 'Tarefa não encontrada'}, status=status.HTTP_404_NOT_FOUND)
 
     

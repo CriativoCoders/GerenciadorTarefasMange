@@ -34,16 +34,18 @@ export default function Tarefas() {
   // ✅ Salvar edição (por enquanto só local)
   const salvarEdicao = (id) => {
     setTarefas(tarefas.map(t => t.id === id ? { ...t, descricao: novaDescricao } : t));
+    alert("Tarefa editada com sucesso!✅")
     setEditandoId(null);
   };
 
   // ✅ Excluir tarefa no backend e frontend
   //==================================
-  // Em teste, o backend está retornando erro 404 ao tentar excluir
+  // Em teste, o backend está retornando erro 404 ao tentar excluir, ja foi consertado ...
   const excluirTarefa = async (id) => {
     try {
       await axios.delete(`http://127.0.0.1:8000/tarefas/${id}/`);
       setTarefas(tarefas.filter(t => t.id !== id));
+      alert("Tarefa excluida com sucesso!✅");
     } catch (error) {
       console.error("Erro ao excluir tarefa:", error.message);
     }
@@ -52,7 +54,6 @@ export default function Tarefas() {
   return (
     <>
       <BarraNavegacao />
-      <h1>Tarefas</h1>
       <div className="tarefas-container">
         {tarefas.map(tarefa => (
           <div className="card" key={tarefa.id}>

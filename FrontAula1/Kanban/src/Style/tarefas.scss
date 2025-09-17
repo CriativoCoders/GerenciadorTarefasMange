@@ -15,8 +15,10 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    width: 250px; // largura fixa para cada card
+    width: 260px; // largura fixa para cada card
     flex: 0 0 auto; // impede que o card encolha
+    font-family: Arial, Helvetica, sans-serif;
+
   }
 
   .card p {

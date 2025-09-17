@@ -33,7 +33,7 @@ export function CadTarefa() {
     console.log("Dados enviados:", data);
     try {
       await axios.post("http://127.0.0.1:8000/tarefas/", data);
-      alert("Tarefa cadastrada com sucesso!");
+      alert("Tarefa cadastrada com sucesso!✅");
       reset();
       navigate("/Tarefas"); // 👈 redireciona para a página inicial (ou outra que você preferir)
     } catch (error) {
@@ -68,6 +68,6 @@ export function CadTarefa() {
 
         <button type="submit">Cadastrar</button>
       </form>
-    </>
+          </>
   );
 }
