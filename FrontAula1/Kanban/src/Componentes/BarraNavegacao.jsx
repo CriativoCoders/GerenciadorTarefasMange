@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 
 export function BarraNavegacao(){
     return(
-        <nav className="barra">
+        <nav className="barra" >
+            <h1>Gerenciador de Tarefas</h1>
             <ul>
                 <li><Link to='/'>Cadastro de Usuário</Link></li>
                 <li><Link to='/CadTarefa'>Cadastro de Tarefa</Link></li>

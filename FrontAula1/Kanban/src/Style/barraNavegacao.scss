@@ -2,7 +2,7 @@
 
 .barra {
   width: 100%;
-  height: 50px; // um pouco mais alta
+  height: 80px; // um pouco mais alta
   background-color: $cor-destaque;
   display: flex;
   align-items: center;
@@ -12,6 +12,14 @@
   position: sticky; // fica fixa ao rolar a página
   top: 0;
   z-index: 100;
+
+
+  h1 {
+    font-size: x-large;
+    color: $link-color;
+    margin-right: auto;
+    font-family: Arial, Helvetica, sans-serif;
+  }
 
   ul {
     font-size: $font-size;

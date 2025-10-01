@@ -31,7 +31,7 @@ export default function Tarefas() {
     setNovaDescricao(tarefa.descricao);
   };
 
-  // ✅ Salvar edição (por enquanto só local)
+  // ✅ Salvar edição
   const salvarEdicao = (id) => {
     setTarefas(tarefas.map(t => t.id === id ? { ...t, descricao: novaDescricao } : t));
     alert("Tarefa editada com sucesso!✅")
@@ -56,9 +56,7 @@ export default function Tarefas() {
       <BarraNavegacao />
       <div className="tarefas-container">
         {tarefas.map(tarefa => (
-          <div className="card" key={tarefa.id}>
-            <p><strong>Setor:</strong> {tarefa.setor}</p>
-
+          <div className="card" key={tarefa.id}> 
             <p>
               <strong>Descrição:</strong> 
               {editandoId === tarefa.id ? (
@@ -68,11 +66,15 @@ export default function Tarefas() {
                   onChange={e => setNovaDescricao(e.target.value)} 
                 />
               ) : (
-                ` ${tarefa.descricao}`
+                `${tarefa.descricao}`
               )}
             </p>
 
-            <p><strong>Prioridade:</strong> {tarefa.prioridade}</p>
+            <p>
+              <strong>Setor:</strong></p>
+
+            <p><strong>Usuário:</strong> {tarefa.usuario}</p>
+
 
             <div className="status">
               <label>Status: </label>
