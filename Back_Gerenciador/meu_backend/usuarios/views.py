@@ -5,21 +5,37 @@ from .models import Usuario
 from .serializers import UsuarioSerializer
 from .models import Tarefa
 from .serializers import TarefaSerializer
+import logging
 
-# api para listar e criar usuarios
+logger = logging.getLogger(__name__)
+# api para listar e criar usuarios 
 @api_view(['GET', 'POST'])
 def usuarios_list(request):
     if request.method == 'GET':
-        usuarios = Usuario.objects.all()
-        serializer = UsuarioSerializer(usuarios, many=True)
-        return Response(serializer.data)
-    
+        try:
+            usuarios = Usuario.objects.all()
+            serializer = UsuarioSerializer(usuarios, many=True)
+            return Response(serializer.data)
+        except Exception as e:
+            logger.error(f"Erro ao listar usuários: {str(e)}")
+            return Response({'erro': 'Erro ao buscar usuários.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
     elif request.method == 'POST':
-        serializer = UsuarioSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        try:
+            serializer = UsuarioSerializer(data=request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+            else:
+                # Retorna os erros de validação detalhados
+                return Response({'erros': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
+        
+        except Exception as e:
+            logger.error(f"Erro inesperado ao cadastrar usuário: {str(e)}")
+            return Response(
+                {'erro': 'Erro interno ao cadastrar o usuário. Tente novamente mais tarde.'},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
 
 
 # api para listar e criar tarefas

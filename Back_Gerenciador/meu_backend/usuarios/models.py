@@ -1,8 +1,10 @@
 from django.db import models
 from django.utils import timezone
 
+
+# CadUsuario
 class Usuario(models.Model):
-    nome = models.CharField(max_length=100)
+    nome = models.CharField(max_length=50, unique=True)
     email = models.EmailField(max_length=100, unique=True)
 
     def __str__(self):

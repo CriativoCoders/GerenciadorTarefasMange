@@ -9,6 +9,11 @@ class UsuarioSerializer(serializers.ModelSerializer):
         fields = ['id', 'nome', 'email']
 
 
+    def validate_nome(self, value):
+        if Usuario.objects.filter(nome=value).exists():
+            raise serializers.ValidationError("Este nome de usuário já está em uso.")
+        return value
+
 class TarefaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tarefa
