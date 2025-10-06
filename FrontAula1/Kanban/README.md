@@ -9,7 +9,8 @@
 
 `npm install react-toastify`
 
--importei no main.jsx
+- importei no main.jsx
 
+`npm install @hello-pangea/dnd`
 
  ## Criei a Pasta Style e o arquivo variaveis.scss
